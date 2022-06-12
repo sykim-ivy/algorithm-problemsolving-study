@@ -18,12 +18,13 @@ class Problem1: Problem() {
      */
     private fun problemSolvingUsingArray() {
         val sc = Scanner(System.`in`)
-        val n = sc.nextInt()
+        val N = sc.nextInt()
 
         val numChArr = sc.next().toCharArray() // ※ 문자열 입력을 바로 Char배열로 바꾸는 게 더 빠름
         var sum = 0
-        for(i in 0 until n) {
-            sum += numChArr[i].toInt() - 48 // ※ 'Char -> 숫자형'으로 고치면 아스키코드값으로 되므로 주의
+        for(i in 0 until N) {
+            sum += (numChArr[i] - '0') // ※ (Char -> 숫자형)변환 시, parsing하지말고 아스키코드값이므로 문자에서 -'0' 해주는 것이 간편함!!
+//            sum += numChArr[i].toInt() - 48 // parsing하면 parsing 메소드 호출 & -48 연산해줘서 간편하지 않음
         }
 
         println("[Problem1] result(UsingArray) = $sum")
