@@ -6,7 +6,7 @@ public class MainClass {
     /**
      * 'Do it! 알고리즘 코딩 테스트' 저서 내 문제 번호
      */
-    public static int problemNo = 0;
+    public static int problemNo = 1;
 
     public static void main(String[] args) {
         System.out.println("Hello PS");
@@ -31,6 +31,7 @@ public class MainClass {
             System.out.println(className + " ClassNotFoundException");
             e.printStackTrace();
         } catch (InstantiationError e) {
+            System.out.println(className + " InstantiationError");
             e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
