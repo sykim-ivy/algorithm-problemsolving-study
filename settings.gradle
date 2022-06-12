@@ -1,0 +1,3 @@
+include ':psJavaLib'
+include ':app'
+rootProject.name = "My PS TempApplication"
