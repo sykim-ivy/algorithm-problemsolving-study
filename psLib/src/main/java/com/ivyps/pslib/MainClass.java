@@ -1,4 +1,5 @@
-package com.ivyps.psjavalib;
+package com.ivyps.pslib;
+
 
 public class MainClass {
 
