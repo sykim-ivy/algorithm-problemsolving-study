@@ -32,5 +32,6 @@ class Problem2: Problem() {
 //        }
 //        println("[Problem2] result = ${(sum/N.toDouble())}")
 
+        sc.close()
     }
 }

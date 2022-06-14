@@ -60,7 +60,7 @@ class Problem4: Problem() {
         }
 
         println("$result")
-
+        br.close()
 
     }
 }

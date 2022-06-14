@@ -40,5 +40,6 @@ class Problem3: Problem() {
             println("[Problem3] result$i = ${S[n2]-S[n1-1]}")
         }
 
+        br.close()
     }
 }

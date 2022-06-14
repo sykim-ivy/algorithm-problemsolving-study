@@ -28,6 +28,7 @@ class Problem1: Problem() {
         }
 
         println("[Problem1] result(UsingArray) = $sum")
+        sc.close()
     }
 
     /**

@@ -34,6 +34,7 @@ class Problem6: Problem() {
         }
 
         println("result = $result")
+        sc.close()
 
     }
 }

@@ -41,6 +41,6 @@ class Problem7: Problem() {
         }
 
         println("result = $result")
-
+        br.close()
     }
 }
