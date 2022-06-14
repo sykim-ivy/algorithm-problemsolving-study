@@ -84,6 +84,13 @@ class PSUtil {
 //        emptyArray<Int>() // 빈 배열 객체 생성
 //        arrayOfNulls<Int>(3) // [null, null, null] 배열 객체 생성
 
+        //  !! 코틀린 2차원 배열 선언법
+        Array(3/*행의 크기*/) {
+            IntArray(4/*열의 크기*/) { -1/*초기화 값*/ }
+        }
+
+        // !! 자바 정수형 배열은 초기값 0으로 채워져있음
+
     }
 
 }
