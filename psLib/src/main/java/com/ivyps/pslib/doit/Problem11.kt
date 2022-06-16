@@ -66,5 +66,6 @@ class Problem11: Problem() {
 //            }
         }
         println(if(isFail) "NO" else result)
+        sc.close()
     }
 }
