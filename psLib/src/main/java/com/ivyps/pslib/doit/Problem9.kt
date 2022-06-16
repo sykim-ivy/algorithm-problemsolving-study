@@ -18,46 +18,48 @@ class Problem9: Problem() {
     override fun problemSolving() {
         println("Hello PS / Problem9")
 
-        val checkChar = 4
+        val checkCharLen = 4
+
         val br = BufferedReader(InputStreamReader(System.`in`))
         var st = StringTokenizer(br.readLine())
-        val sLen = st.nextToken().toInt()
-        val pLen = st.nextToken().toInt()
+        val S = st.nextToken().toInt()
+        val P = st.nextToken().toInt()
 
         st = StringTokenizer(br.readLine())
-        val sStr = st.nextToken()
+        val A = st.nextToken()
 
         st = StringTokenizer(br.readLine())
-        val c1 = IntArray(checkChar)
-        for(i in 0 until checkChar) {
-            c1[i] = st.nextToken().toInt()
+        val checkArr = IntArray(checkCharLen)
+        for(i in 0 until checkCharLen) {
+            checkArr[i] = st.nextToken().toInt()
         }
 
-        println("c1['A'=${c1[0]}, 'C'=${c1[1]}, 'G'=${c1[2]}, 'T'=${c1[3]}]")
+        println("c1['A'=${checkArr[0]}, 'C'=${checkArr[1]}, 'G'=${checkArr[2]}, 'T'=${checkArr[3]}]")
 
         var result = 0
         var s = 0
-        var e = s + pLen
-        val c2 = IntArray(checkChar)
-        makeCArray(sStr.substring(s, e), c2)
+        var e = s + P
+        val myArr = IntArray(checkCharLen)
+        makeCArray(A.substring(s, e), myArr)
 
-        if(compareCArray(c1,c2)) {
-            println("pw($s, ${e-1}) = ${sStr.substring(s, e)}")
+        if(compareCArray(checkArr,myArr)) {
+            println("pw($s, ${e-1}) = ${A.substring(s, e)}")
             result++
         }
 
-        while(e < sLen) {
-            removeChar(sStr[s], c2)
+        while(e < S) {
+            removeChar(A[s], myArr)
             s++
-            e = s + pLen
-            addChar(sStr[e-1], c2)
+            e = s + P
+            addChar(A[e-1], myArr)
 
-            if(compareCArray(c1,c2)) {
-                println("pw($s, ${e-1}) = ${sStr.substring(s, e)}")
+            if(compareCArray(checkArr,myArr)) {
+                println("pw($s, ${e-1}) = ${A.substring(s, e)}")
                 result++
             }
         }
         println("result = $result")
+        br.close()
     }
 
     private fun addChar(c: Char, c2: IntArray) {
