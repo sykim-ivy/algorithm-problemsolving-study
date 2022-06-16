@@ -15,6 +15,10 @@ GATA
 1 0 0 1
  */
 class Problem9: Problem() {
+
+    var checkSecret = 0
+    lateinit var checkArr: IntArray
+
     override fun problemSolving() {
         println("Hello PS / Problem9")
 
@@ -29,9 +33,11 @@ class Problem9: Problem() {
         val A = st.nextToken()
 
         st = StringTokenizer(br.readLine())
-        val checkArr = IntArray(checkCharLen)
+        checkSecret = 0
+        checkArr = IntArray(checkCharLen)
         for(i in 0 until checkCharLen) {
             checkArr[i] = st.nextToken().toInt()
+            if(checkArr[i] == 0) checkSecret++
         }
 
         println("c1['A'=${checkArr[0]}, 'C'=${checkArr[1]}, 'G'=${checkArr[2]}, 'T'=${checkArr[3]}]")
@@ -42,7 +48,8 @@ class Problem9: Problem() {
         val myArr = IntArray(checkCharLen)
         makeCArray(A.substring(s, e), myArr)
 
-        if(compareCArray(checkArr,myArr)) {
+        if(checkSecret == checkCharLen) {
+//        if(compareCArray(checkArr,myArr)) {
             println("pw($s, ${e-1}) = ${A.substring(s, e)}")
             result++
         }
@@ -53,7 +60,8 @@ class Problem9: Problem() {
             e = s + P
             addChar(A[e-1], myArr)
 
-            if(compareCArray(checkArr,myArr)) {
+            if(checkSecret == checkCharLen) {
+//            if(compareCArray(checkArr,myArr)) {
                 println("pw($s, ${e-1}) = ${A.substring(s, e)}")
                 result++
             }
@@ -66,15 +74,19 @@ class Problem9: Problem() {
         when (c) {
             'A' -> {
                 c2[0]++
+                if(checkArr[0] == c2[0]) checkSecret++
             }
             'C' -> {
                 c2[1]++
+                if(checkArr[1] == c2[1]) checkSecret++
             }
             'G' -> {
                 c2[2]++
+                if(checkArr[2] == c2[2]) checkSecret++
             }
             'T' -> {
                 c2[3]++
+                if(checkArr[3] == c2[3]) checkSecret++
             }
         }
     }
@@ -82,26 +94,30 @@ class Problem9: Problem() {
     private fun removeChar(c: Char, c2: IntArray) {
         when (c) {
             'A' -> {
+                if(checkArr[0] == c2[0]) checkSecret--
                 c2[0]--
             }
             'C' -> {
+                if(checkArr[1] == c2[1]) checkSecret--
                 c2[1]--
             }
             'G' -> {
+                if(checkArr[2] == c2[2]) checkSecret--
                 c2[2]--
             }
             'T' -> {
+                if(checkArr[3] == c2[3]) checkSecret--
                 c2[3]--
             }
         }
     }
 
-    private fun compareCArray(c1: IntArray, c2: IntArray): Boolean {
-        for(i in c1.indices) {
-            if(c1[i] != c2[i]) return false
-        }
-        return true
-    }
+//    private fun compareCArray(c1: IntArray, c2: IntArray): Boolean {
+//        for(i in c1.indices) {
+//            if(c1[i] != c2[i]) return false
+//        }
+//        return true
+//    }
 
     private fun makeCArray(sStr: String, c2: IntArray) {
         for(item in sStr) {
