@@ -18,6 +18,7 @@ class Problem15: Problem() {
             arr[i] = sc.nextInt()
         }
 
+        // ※ 버블 정렬이 O(n*n) 시간복잡도인 이유 ▽
         for(i in 0 until n) {
             for(j in 0 until n-i-1) {
                 if(arr[j] > arr[j+1]) {
