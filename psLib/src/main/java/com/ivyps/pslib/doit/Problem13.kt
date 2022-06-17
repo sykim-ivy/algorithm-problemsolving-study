@@ -23,5 +23,6 @@ class Problem13: Problem() {
         }
 
         println("result : ${q.poll()}")
+        sc.close()
     }
 }
