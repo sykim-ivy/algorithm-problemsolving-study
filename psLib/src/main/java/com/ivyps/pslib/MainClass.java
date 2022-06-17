@@ -6,7 +6,7 @@ public class MainClass {
     /**
      * 'Do it! 알고리즘 코딩 테스트' 저서 내 문제 번호
      */
-    public static int problemNo = 14;
+    public static int problemNo = 15;
 
     public static void main(String[] args) {
         System.out.println("Hello PS");
