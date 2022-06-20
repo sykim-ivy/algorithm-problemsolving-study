@@ -2,7 +2,10 @@ package com.ivyps.pslib.util
 
 import java.io.BufferedReader
 import java.io.InputStreamReader
+import java.lang.Integer.max
+import java.lang.Integer.min
 import java.util.*
+import kotlin.math.pow
 
 /**
  * 문제풀이에 공통적이거나 알아야하는 부분
@@ -31,6 +34,7 @@ class PSUtil {
         val br = BufferedReader(InputStreamReader(System.`in`))
         br.read() // 스트림으로부터 한 문자를 읽어서 int형으로 리턴 ('3' -> (int)'3' -> 51)
         br.readLine()
+
 
         br.close()
     }
@@ -70,6 +74,26 @@ class PSUtil {
 
     }
 
+    /*******************************************************
+     * 코틀린 math 관련 함수들
+     *******************************************************/
+    fun mathInKotlin() {
+        // 최대 최솟값!!
+        max(1,3)
+        min(1,-3)
+
+        // ※ 코틀린 제곱함수 : (Doblue형 숫자).pow(Doblue형 제곱숫자)
+        val cnt = 3
+        var jarisu: Int = 10.0.pow(cnt.toDouble()).toInt() // 1000
+
+
+        // ※ n번째 자릿수 숫자 구하는 공식 = "검색할숫자/(10의 n-1제곱)%10" !!!
+        var num = 5613
+        var n = 3
+        var tenN = 10.0.pow(n-1)
+        var digitAt3 = num/tenN%10
+
+    }
 
     /*******************************************************
      * 코틀린 배열 생성 관련
