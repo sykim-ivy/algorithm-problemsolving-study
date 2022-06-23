@@ -5,6 +5,8 @@ import java.io.InputStreamReader
 import java.lang.Integer.max
 import java.lang.Integer.min
 import java.util.*
+import kotlin.Comparator
+import kotlin.math.abs
 import kotlin.math.pow
 
 /**
@@ -164,4 +166,67 @@ class PSUtil {
         val q: Queue<Int> = LinkedList()
         q.offer(3) // ※ offer()는 추가성공여부 리턴 cf) add()는 예외발생
     }
+
+    /*******************************************************
+     * 자바,코틀린 제공 정렬 함수
+     *******************************************************/
+    fun javaSort() {
+        val arr = arrayOf(1, 29, 3, 4, 402)
+        /**
+         * 1. 오름차순 정렬
+         */
+        arr.sort() // 원본 정렬
+        // 원본 유지
+        arr.sortedArray() // 정렬 후 새 배열반환
+        arr.sorted() // 정렬 후 리스트 반환
+        // 클래스 정렬
+        arr.sortBy { it }
+
+        for(i in arr) println("오름차순 arr = $i")
+        println()
+
+        /**
+         * 2. 내림차순 정렬
+         */
+        arr.sortedDescending() // 원본 정렬
+        // 원본 유지
+        arr.sortedArrayDescending() // 정렬 후 새 배열반환
+        arr.sortDescending() // 정렬 후 리스트 반환
+        // 클래스 정렬
+        arr.sortByDescending { it }
+
+        for(i in arr) println("내림차순 arr = $i")
+        println()
+
+        /**
+         * 3. Comparator 정렬
+         * - Comparator.compared(p1, p2) : Int
+         *      ㄴ> 첫번째 파라미터인 'p1'가 더 크면 양수 리턴 (같으면 0)
+         */
+        arr.sortWith(Comparator { o1, o2 ->
+//            o1 - o2 //  오름차순
+//            o2 - o1 //  내림차순
+            // 절대값으로 오름차순 (같으면 원본값 비교)
+            val o1ABS = abs(o1)
+            val o2ABS = abs(o2)
+            if(o1ABS == o2ABS) if(o1 > o2) 1 else -1 // 같으면 원본값 비교
+            else o1ABS - o2ABS
+        })
+
+        /**
+         * 여러 기준으로 정렬
+         * - sortWith()에 comparator 대신 "compareBy(), compareByDescending()" 넣어 정렬
+         * - 정렬 기준이 되는 속성들의 순서를 지정 가능
+         */
+        var pArr = arrayOf(Pair("Park", 10), Pair("Kim", 12), Pair("Kim", 5), Pair("Lee", 19))
+
+        // Pair 데이터 중 string 우선 정렬 후 -> int값 정렬
+        pArr.sortWith(compareBy({it.first}, {it.second}))
+
+        pArr.sortWith(compareByDescending { it.first })
+
+    }
+
+    // [s~e 사이의 중간값] = (s+e)/2 써도 동일함!!
+    // 이진탐색은 e>=s일때까지 돌아야함 주의!!
 }
